@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import xyz.tiancaikai.gulimall.product.entity.ProductAttrValueEntity;
-import xyz.tiancaikai.gulimall.product.service.ProductAttrValueService;
+import xyz.tiancaikai.gulimall.product.entity.CategoryBrandRelationEntity;
+import xyz.tiancaikai.gulimall.product.service.CategoryBrandRelationService;
 import xyz.tiancaikai.common.utils.PageUtils;
 import xyz.tiancaikai.common.utils.R;
 
 
 
 /**
- * spu属性值
+ * 品牌分类关联
  *
  * @author tiancaikai
  * @email 523866653@qq.com
  * @date 2020-09-09 09:39:18
  */
 @RestController
-@RequestMapping("product/productattrvalue")
-public class ProductAttrValueController {
+@RequestMapping("product/categorybrandrelation")
+public class CategoryBrandRelationController {
     @Autowired
-    private ProductAttrValueService productAttrValueService;
+    private CategoryBrandRelationService categoryBrandRelationService;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("product:productattrvalue:list")
+    //@RequiresPermissions("product:categorybrandrelation:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = productAttrValueService.queryPage(params);
+        PageUtils page = categoryBrandRelationService.queryPage(params);
 
         return R.ok().put("page", page);
     }
@@ -47,20 +47,20 @@ public class ProductAttrValueController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("product:productattrvalue:info")
+    //@RequiresPermissions("product:categorybrandrelation:info")
     public R info(@PathVariable("id") Long id){
-		ProductAttrValueEntity productAttrValue = productAttrValueService.getById(id);
+		CategoryBrandRelationEntity categoryBrandRelation = categoryBrandRelationService.getById(id);
 
-        return R.ok().put("productAttrValue", productAttrValue);
+        return R.ok().put("categoryBrandRelation", categoryBrandRelation);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("product:productattrvalue:save")
-    public R save(@RequestBody ProductAttrValueEntity productAttrValue){
-		productAttrValueService.save(productAttrValue);
+    //@RequiresPermissions("product:categorybrandrelation:save")
+    public R save(@RequestBody CategoryBrandRelationEntity categoryBrandRelation){
+		categoryBrandRelationService.save(categoryBrandRelation);
 
         return R.ok();
     }
@@ -69,9 +69,9 @@ public class ProductAttrValueController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("product:productattrvalue:update")
-    public R update(@RequestBody ProductAttrValueEntity productAttrValue){
-		productAttrValueService.updateById(productAttrValue);
+    //@RequiresPermissions("product:categorybrandrelation:update")
+    public R update(@RequestBody CategoryBrandRelationEntity categoryBrandRelation){
+		categoryBrandRelationService.updateById(categoryBrandRelation);
 
         return R.ok();
     }
@@ -80,9 +80,9 @@ public class ProductAttrValueController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("product:productattrvalue:delete")
+    //@RequiresPermissions("product:categorybrandrelation:delete")
     public R delete(@RequestBody Long[] ids){
-		productAttrValueService.removeByIds(Arrays.asList(ids));
+		categoryBrandRelationService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

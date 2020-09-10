@@ -23,7 +23,7 @@ import xyz.tiancaikai.common.utils.R;
  *
  * @author tiancaikai
  * @email 523866653@qq.com
- * @date 2020-09-01 16:20:23
+ * @date 2020-09-09 09:39:18
  */
 @RestController
 @RequestMapping("product/spuinfo")

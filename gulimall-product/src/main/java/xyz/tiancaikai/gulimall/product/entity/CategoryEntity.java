@@ -1,10 +1,13 @@
 package xyz.tiancaikai.gulimall.product.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 /**
@@ -12,7 +15,7 @@ import lombok.Data;
  * 
  * @author tiancaikai
  * @email 523866653@qq.com
- * @date 2020-08-31 14:42:55
+ * @date 2020-09-09 09:39:18
  */
 @Data
 @TableName("pms_category")
@@ -56,5 +59,9 @@ public class CategoryEntity implements Serializable {
 	 * $column.comments
 	 */
 	private Integer productCount;
+
+	@JsonInclude(JsonInclude.Include.NON_EMPTY)
+	@TableField(exist=false)
+	private List<CategoryEntity> children;
 
 }
